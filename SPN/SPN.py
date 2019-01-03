@@ -76,7 +76,7 @@ def reverse_Pbox(p_box):
 
 def do_SPN(x, s_box, p_box, Ks):
     """
-    5轮的SPN网络，可以用来进行加密或解密
+    4轮的SPN网络，可以用来进行加密或解密
     :param x: 16比特输入
     :param s_box: S盒参数
     :param p_box: P盒参数
@@ -84,7 +84,7 @@ def do_SPN(x, s_box, p_box, Ks):
     :return: 16比特输出
     """
     wr = x
-    for r in range(4 - 1):
+    for r in range(3):
         ur = wr ^ Ks[r]  # 异或操作
         vr = pi_s(s_box, ur)  # 分组代换
         wr = pi_p(p_box, vr)  # 单比特置换
